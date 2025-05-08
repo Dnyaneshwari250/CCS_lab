@@ -1,0 +1,58 @@
+Microsoft Windows [Version 10.0.26100.3624]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\khale>cd \xampp\apache
+
+C:\xampp\apache>openssl genrsa -out server.key 2048
+'openssl' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache>
+C:\xampp\apache>openssl req -new -key server.key -out server.csr -config "C:\xampp\apache\conf\openssl.cnf"
+'openssl' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache>
+C:\xampp\apache>openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+'openssl' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache>cd C:\xampp\apache\bin
+
+C:\xampp\apache\bin>openssl genrsa -out server.key 2048
+
+C:\xampp\apache\bin>openssl req -new -key server.key -out server.csr -config "C:\xampp\apache\conf\openssl.cnf"
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [IN]:IN
+State or Province Name (full name) [Maharashtra]:Maharashtra
+Locality Name (eg, city) [Mumbai]:Mumbai
+Organization Name (eg, company) [MyCompany]:MyCompany
+Common Name (e.g. server FQDN or YOUR name) [localhost]:localhost
+
+C:\xampp\apache\bin>openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+Certificate request self-signature ok
+subject=C = IN, ST = Maharashtra, L = Mumbai, O = MyCompany, CN = localhost
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\
+'C:\xampp\apache\conf\' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>C:\xampp\apache\bin\
+'C:\xampp\apache\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\extra\httpd-ssl.conf
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\httpd.conf
+
+C:\xampp\apache\bin>C:/xampp/htdocs
+'C:/xampp/htdocs' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>

@@ -1,0 +1,39 @@
+from Crypto.Cipher import AES
+import os
+
+key = input("Enter a 16-byte key: ").encode() 
+
+if len(key) not in [16]:
+    print("Invalid key length! Key must be 16 bytes.")
+    exit()
+
+cipherfun = AES.new(key, AES.MODE_EAX) 
+
+m= input("Enter the message to encrypt: ")
+msg=m.encode()
+# Encryption function
+def encrypt(msg):
+    nonce = cipherfun.nonce  # Get nonce (needed for decryption)
+    ciphertext, tag = cipher.encrypt_and_digest(msg)
+    return nonce, ciphertext, tag
+
+# Decryption function
+def decrypt(nonce, ciphertext, tag):
+    cipherfun = AES.new(key, AES.MODE_EAX, nonce=nonce)  # Recreate cipher with nonce
+    plaintext = cipherfun.decrypt(ciphertext)
+    try:
+        cipher.verify(tag)  # Ensure integrity
+        return plaintext.decode()
+    except ValueError:
+        return False
+
+# Encrypt the message
+nonce, ciphertext, tag = encrypt(msg)
+print(f'Cipher text: {ciphertext.hex()}')
+
+# Decrypt and verify message
+plaintext = decrypt(nonce, ciphertext, tag)
+if not plaintext:
+    print('Message is not original!')
+else:
+    print(f'Plain text: {plaintext}')
